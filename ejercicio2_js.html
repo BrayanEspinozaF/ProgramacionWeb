@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicio 2</title>
+</head>
+
+<body>
+    
+    <script type="application/x-javascript">
+        
+        var meses=['Enero','Febrero','Marzo','Abril'];
+        meses.push('Mayo'); // agrega al final
+        //meses.pop(); //borrar un elemento final
+        //meses.shift(); // borrar el primer elemento
+        //meses.splice(pos,1); // rango para borrar posicion y cantidad de elementos
+        //meses.unshift();  //agrega uno al inicio
+        //
+        //console.log(meses[0]);
+        //console.log(meses.length);
+        var posicion=meses.indexOf('Febrero');
+        meses.splice(posicion,1);                           
+        
+        
+        meses.forEach(function(elemento, indice){
+            console.log(elemento, indice);
+            
+            });
+        
+        
+        var personas={nombre:'Jose',rfc:'AAA', edad:21};
+        console.log(personas.nombre);
+        console.log(personas['nombre']);
+        
+        
+        for (var persona in personas) {
+            console.log(persona+' : '+personas[persona]);
+        }
+        
+    </script>
+    
+    
+</body>
+
+</html>

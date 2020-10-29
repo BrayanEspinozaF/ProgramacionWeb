@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicios JS</title>
+    <!--Seccion de css-->
+        <!--bootstrap-->
+            <link rel="stylesheet" href="../../css/bootstrap.min.css">
+        <!--bootstrap-->
+        <!--personal-->
+            <link rel="stylesheet" href="../../css/mis_reglas.css">
+        <!--personal-->
+        <!--font-awesome-->
+            <link rel="stylesheet" href="../../css/fontawesome.min.css">
+            <link rel="stylesheet" href="../../css/solid.min.css">
+            <link rel="stylesheet" href="../../css/brands.min.css">
+        <!--font-awesome-->
+    <!--Seccion de css-->
+</head>
+
+<body>
+    <hr>
+    <div class="container">
+    <div id="saludo" onmouseover="cambia_color();" onmouseout="regresa_color();"
+    onclick="this.innerHTML=this.innerHTML.toUpperCase();"
+    ondblclick="this.innerHTML=this.innerHTML.toLowerCase();"> No hay un saludo
+    a&uacute;n</div>
+    
+    <button type="button" onclick="mostrar();">Mostrar Saludo</button>&nbsp;|&nbsp;
+    
+    <button type="button" onclick="crearTabla(5,5);">Crear Tabla</button>
+    
+    </div>
+    <hr>
+    <div class="container">
+      <form> 
+        <div class="row">
+            <div class="col-sm-4">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Operador 1</label>
+            <input type="text" class="form-control" name="operador1" id="operador1" required="required">
+           </div>
+           </div>
+          
+            
+            <div class="col-sm-4">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Operador 2</label>
+            <input type="text" class="form-control" name="operador2" id="operador2" required="required">
+           </div>
+          </div>
+          <!--resultado-->
+         
+           
+            <div class="col-sm-4">
+          <div class="form-group">
+            <label for="exampleInputEmail1">resultado </label>
+            <input type="text" class="form-control" name="resultado" id="resultado" readonly="readonly">
+           </div>
+          </div>
+            </div>
+            
+          <button type="button" class="btn btn-primary" onclick="suma();">Sumar</button>
+        </form>
+    </div>
+    
+      
+      <hr>
+    <div class="container">
+       <form> 
+        <div class="row">
+            <div class="col-sm-4">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Columnas</label>
+            <input type="text" class="form-control" name="columnas" id="columnas" required="required">
+           </div>
+           </div>
+          
+            
+            <div class="col-sm-4">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Renglones</label>
+            <input type="text" class="form-control" name="renglones" id="renglones" required="required">
+           </div>
+          </div>
+            </div>
+          <button type="button" class="btn btn-primary" onclick="crearTabla();">crearTabla</button>
+        </form>
+      
+    </div>   
+        
+    <hr>
+    <div class="container">
+      
+      
+      
+      <div id="vertabla">
+        
+        
+      </div>
+    
+    
+    
+    
+    <script type="application/x-javascript">
+   
+    /* comentario multilinea */ 
+    
+    //var sNombre="Brayan";
+    //document.write(sNombre);
+    //document.write('<br> longitud: '+sNombre.length);
+    //document.write('<br> Mayusculas : '+sNombre.toUpperCase());
+    
+  window.onload=function(){
+     
+     //alert(' Saludos ');
+     var sOperador1=document.getElementById("operador1")
+     sOperador1.focus();
+     
+  }
+
+    
+    function mostrar(){
+        var divSaludo=document.getElementById('saludo');
+        divSaludo.innerHTML='Hola clase de programacion Web';
+        
+        console.log(divSaludo);
+        
+    }
+    function cambia_color(){
+        var divSaludo=document.getElementById('saludo');
+        divSaludo.style.color="#f00";
+    }
+    function regresa_color(){
+        var divSaludo=document.getElementById('saludo');
+        divSaludo.style.color="#000";
+    }
+    
+    function suma(){
+        var sOperador1=document.getElementById('operador1').value;
+        var sOperador2=document.getElementById('operador2').value;
+        if(sOperador1==null || isNaN(sOperador1) || sOperador1.length==0 || /^\s+$/.test(sOperador1)){
+            alert('no son valores validos');
+            //document.getElementById('operador1').focus();
+              document.getElementById('operador1').select();
+            
+            return false;           
+        }
+        if(sOperador2==null || isNaN(sOperador2) || sOperador2.length==0 || /^\s+$/.test(sOperador2)){
+            alert('no son valores validos');
+            document.getElementById('operador2').focus();
+            return false;          
+        }
+        document.getElementById('resultado').value=parseInt(sOperador1)+parseInt(sOperador2);
+        return true;
+    }
+    
+    
+    </script>
+    
+    <script>
+      function crearTabla(nCol=1,nRen=1) {
+        
+        var nCol=document.getElementById('columnas').value;
+        var nRen=document.getElementById('renglones').value;
+        if(nCol==null || isNaN(nCol) || nCol.length==0 || /^\s+$/.test(nCol)){
+            alert('no son valores validos');
+            //document.getElementById('operador1').focus();
+              document.getElementById('columnas').select();
+            
+            return false;           
+        }
+        if(nRen==null || isNaN(nRen) || nRen.length==0 || /^\s+$/.test(nRen)){
+            alert('no son valores validos');
+            document.getElementById('renglones').focus();
+            return false;          
+        }
+        
+        //revisar tema de funcion ternaria
+        //var nCol=(nCol<=0 || nCol==undefined)?1:nCol;
+        var divVerTabla=document.getElementById('vertabla');
+        divVerTabla.innerHTML='';
+        // uso de funciones para vrear nodos
+        var oTabla=document.createElement('table');
+        oTabla.setAttribute('class','table table-bordered table-striped');
+        var oHead=document.createElement('thead');
+        var oBody=document.createElement('tbody'); 
+        var oFoot=document.createElement('tfoot');
+
+        
+        //seccion de encabezado
+         var oRen=document.createElement('tr');
+         var oTH=document.createElement('th');
+         var oTexto=document.createTextNode('Sec.');
+         
+              //Asignaciones
+         oTH.appendChild(oTexto);
+         oRen.appendChild(oTH);
+              //crear el resto de las columnas
+         for (i=1;i<=nCol;i++){
+           oTH=document.createElement('th');
+           oTexto=document.createTextNode(i);
+           oTH.appendChild(oTexto);
+           oRen.appendChild(oTH);
+         }
+         
+         oHead.appendChild(oRen);
+         oTabla.appendChild(oHead);
+         // fin del encabezado
+         // seccion de body
+         for (i=1;i<=nRen;i++) {
+                oRen=document.createElement('tr');
+                oTH=document.createElement('th');
+                oTexto=document.createTextNode(i);
+                oTH.appendChild(oTexto);
+                oRen.appendChild(oTH);
+            //iran alguna sentencias
+            
+            for (j=1;j<=nCol;j++) {
+                oTD=document.createElement('td');
+                oTexto=document.createTextNode(i+' , '+j);
+                oTD.appendChild(oTexto);
+                oRen.appendChild(oTD);
+            }
+            //fin de columna
+            oBody.appendChild(oRen);
+            //fin de renglon
+            oTabla.appendChild(oBody);
+         }
+         
+         //fin de seccion body
+         //seccion de tfoot
+                oRen=document.createElement('tr');
+                oTD=document.createElement('td');
+                oTexto=document.createTextNode('Todos los derechos reservados...');
+                oTD.appendChild(oTexto);
+                oTD.setAttribute('colsapn',(nCol+1));
+                oRen.appendChild(oTD);
+                oFoot.appendChild(oRen);
+                oTabla.appendChild(oFoot);
+                
+         //fin de seccion tfoot
+         
+         
+         
+         
+         divVerTabla.appendChild(oTabla);
+         
+         
+         
+      }// fin de la funcion   
+      
+      
+    </script>
+    
+      
+      <!--Seccion de javasript-->
+        <!--jquery3.5.1-->
+            <script type="application/x-javascript" src="../../js/jquery-3.5.1.min.js"></script>
+        <!--jquery3.5.1-->
+        <!--bootstrap-->
+            <script type="application/x-javascript" src="../../js/bootstrap.min.js"></script>
+            <script type="application/x-javascript" src="../../js/fontawesome.min.js"></script>
+            <script type="application/x-javascript" src="../../js/solid.min.js"></script>
+            <script type="application/x-javascript" src="../../js/brands.min.js"></script>
+        <!--bootstrap-->
+    <!--Seccion de javasript-->
+      
+</body>
+
+</html>
